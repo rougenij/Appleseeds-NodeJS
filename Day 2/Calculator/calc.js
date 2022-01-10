@@ -74,9 +74,14 @@ yargs.command({
       demandOption: true,
       type: "number",
     },
+    pow: {
+      describe: "pow is pow param",
+      demandOption: true,
+      type: "number",
+    },
   },
   handler: function (argv) {
-    console.log(argv.a * argv.a);
+    console.log(Math.pow(argv.a ,argv.pow);
   },
 });
 

@@ -1,13 +1,16 @@
-const add = function (a, b) {
-  return a + b;
-};
+import fs from "fs";
 
-export const changeName = function (name) {
-  return `my name used to be Rouge now its ${name}`;
-};
+console.log(__dirname);
+// const add = function (a, b) {
+//   return a + b;
+// };
 
-export const hello = function () {
-  return console.log("Helloooooooooo");
-};
+// export const changeName = function (name) {
+//   return `my name used to be Rouge now its ${name}`;
+// };
 
-export default add;
+// export const hello = function () {
+//   return console.log("Helloooooooooo");
+// };
+
+// export default add;

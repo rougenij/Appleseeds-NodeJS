@@ -1,7 +1,7 @@
-const https = require("https");
+const http = require("http");
 const url = "https://api.fbi.gov/wanted/v1/list";
 
-const request = https.request(url, (response) => {
+const request = http.request(url, (response) => {
   let data = "";
 
   response.on("data", (chunk) => {

@@ -1,53 +1,26 @@
 const express = require("express");
-const geocode = require("./utils/geocode");
-const forecast = require("./utils/forecast");
+const axios = require("axios");
 
 const app = express();
 
-// Setup static directory to serve
-//TODO need to be changed
-app.use(express.static(publicDirectoryPath));
 
-app.get("/weather", (req, res) => {
-  if (!req.query.address) {
+
+app.get("/weather/:address", async (req, res) => {
+  if (!req.params.address) {
     return res.send({
       error: "You must provide an address!",
     });
   }
 
-  geocode(
-    req.query.address,
-    (error, { latitude, longitude, location } = {}) => {
-      if (error) {
-        return res.send({ error });
-      }
-
-      forecast(latitude, longitude, (error, forecastData) => {
-        if (error) {
-          return res.send({ error });
-        }
-
-        res.send({
-          forecast: forecastData,
-          location,
-          address: req.query.address,
-        });
-      });
-    }
+  const data = await axios.get(
+    `http://api.weatherstack.com/current?access_key=2c313e6f7228ccfab696a2b848bb8a93&query=${req.params.address}`
   );
-});
-
-app.get("/products", (req, res) => {
-  if (!req.query.search) {
-    return res.send({
-      error: "You must provide a search term",
-    });
-  }
-
-  console.log(req.query.search);
-  res.send({
-    products: [],
-  });
+  const response =
+    data.data.current.weather_descriptions[0] +
+    ". It is currently " +
+    data.data.current.temperature +
+    " degress out.";
+  res.send(response);
 });
 
 app.listen(3000, () => {

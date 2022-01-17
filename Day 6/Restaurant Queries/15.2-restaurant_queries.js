@@ -30,7 +30,7 @@ db.restaurants.updateMany({ kosher: false }, { $set: { kosher: true } });
 //1.12 -  Delete a specific restaurant
 db.restaurants.deleteOne({ _id: ObjectId("61e5423e71a316ff5f596e71") });
 //1.13 -  Delete all restaurants
-db.restaurants.deleteMany({ name: { $exists: true } });
+db.restaurants.deleteMany({ _id: { $exists: true } });
 db.restaurants.deleteMany({});
 
 //* ForEach
@@ -40,17 +40,17 @@ db.restaurants.find().forEach(function (restaurant) {
 });
 //2.2 - Write a MongoDb query to print all restaurant cities
 db.restaurants.find().forEach((restaurant) => {
-  print("restaurant name: " + restaurant.address.city);
+  print("restaurant address: " + restaurant.address.city);
 });
 //2.3 - Write a MongoDb query to print all restaurant coordinates
 db.restaurants.find().forEach((restaurant) => {
-  print("restaurant name: " + restaurant.address.coordinates);
+  print("restaurant coordinates: " + restaurant.address.coordinates);
 });
 
 //* Advanced Queries
 //3.1 - Query for restaurant names that start with a specific alphabet
 db.restaurants.find({ name: /^b/i });
-db.restaurants.find({ name: { $regex: "^t", $options: "1" } });
+db.restaurants.find({ name: { $regex: "^t", $options: "i" } });
 //3.2 - Query how many documents you have from the restaurant collection.
 db.restaurants.find().count();
 //3.3 - Write a MongoDb query to get restaurants that include reviews from a specific date.

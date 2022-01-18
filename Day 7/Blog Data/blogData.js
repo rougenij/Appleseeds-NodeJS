@@ -6,8 +6,10 @@ const url = "mongodb://localhost:27017/";
 const users = [
   { name: "Timmy Hodadad", email: "timmy123@email.com" },
   { name: "Mordi Ben", email: "mordi@email.com" },
-  { name: "Reut Farkash", email: "reut@email.com" },
   { name: "Rouge Nijem", email: "rouge@email.com" },
+  { name: "Reut Farkash", email: "reut@email.com" },
+  { name: "Itzik", email: "Itzik@email.com" },
+  { name: "Yoni Nissan", email: "yoni@email.com" },
 ];
 
 MongoClient.connect(url, { useNewUrlParser: true }, (error, client) => {

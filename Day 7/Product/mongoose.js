@@ -67,8 +67,47 @@ const product = new Shop({
     imgs: [1, 2],
   },
 });
+const blancos = new Shop({
+  name: "Blancos",
+  category: "Best Group",
+  isActive: true,
+  details: {
+    description: "The Best group in this bootcamp",
+    price: 10000000000000000,
+    imgs: [1, 2],
+  },
+});
+const timmy = new Shop({
+  name: "Timmy",
+  category: "South Park",
+  isActive: true,
+  details: {
+    description:
+      "Pini's second account.. Everything is for Timmy, better not kill him",
+    price: 1000,
+    imgs: [1, 2],
+  },
+});
 
 product
+  .save()
+  .then((product) => {
+    console.log(product);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+blancos
+  .save()
+  .then((product) => {
+    console.log(product);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+timmy
   .save()
   .then((product) => {
     console.log(product);

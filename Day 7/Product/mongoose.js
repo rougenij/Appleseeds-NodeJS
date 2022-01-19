@@ -22,9 +22,9 @@ const Shop = mongoose.model("Shop", {
     description: {
       type: String,
       required: true,
-      min: [10, "10 is minimun"],
+      minLength: [10, "10 is minimun"],
       validate(value) {
-        if (value < 10) {
+        if (value.length < 10) {
           throw new Error(
             "Descripition of product must be greater than 10 words!"
           );
@@ -34,6 +34,7 @@ const Shop = mongoose.model("Shop", {
     price: {
       type: Number,
       required: true,
+      // min: 0
       validate(value) {
         if (value < 0) {
           throw new Error("Must be a positive number");
@@ -46,9 +47,10 @@ const Shop = mongoose.model("Shop", {
     },
     imgs: {
       type: Array,
+      // type:[String] -> The way to accept an array of String only
       minItems: 2,
       validate(value) {
-        if (value < 2) {
+        if (value.length < 2) {
           throw new Error("Product must have 2 images");
         }
       },

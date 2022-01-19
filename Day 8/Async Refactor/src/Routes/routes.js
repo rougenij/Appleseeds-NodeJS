@@ -116,7 +116,8 @@ router.delete("/products/:id", async (req, res) => {
 router.delete("/products", async (req, res) => {
   try {
     const products = await Product.deleteMany({});
-    if (!products) {
+    console.log(products);
+    if (!products || products.deletedCount === 0) {
       return res.status(400).send("No Products in shop");
     }
     res.send("All Products have been deleted");

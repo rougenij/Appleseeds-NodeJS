@@ -99,7 +99,7 @@ router.patch("/products/:id", async (req, res) => {
   }
 });
 
-//Delets a specific product
+//Deletes a specific product
 router.delete("/products/:id", async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
@@ -116,7 +116,6 @@ router.delete("/products/:id", async (req, res) => {
 router.delete("/products", async (req, res) => {
   try {
     const products = await Product.deleteMany({});
-    console.log(products);
     if (!products || products.deletedCount === 0) {
       return res.status(400).send("No Products in shop");
     }

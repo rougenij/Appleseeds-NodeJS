@@ -18,6 +18,7 @@ const upload = multer({
     //* Is a method to filter what kind of data i want to get
     //* fileFilter takes 3 arguments -> request, file, cb -> callback
     //* req contains that the request has been made
+    //https://www.npmjs.com/package/multer
     //* file contains information about the file that been uploaded
     //* we use cb to tell the filter that we are done filtering the file
 
@@ -106,8 +107,6 @@ app.post(
     res.status(400).send({ error: error.message });
   }
 );
-
-app.use(productRouter);
 
 app.listen(port, () => {
   console.log("Server is up on port " + port);
